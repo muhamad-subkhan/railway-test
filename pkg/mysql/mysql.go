@@ -12,11 +12,11 @@ var DB *gorm.DB
 
 func Database() {
 
-	DB_PASSWORD := os.Getenv("DB_PASSWORD")
-	DB_USER := os.Getenv("DB_USER")
-	DB_HOST := os.Getenv("DB_HOST")
-	DB_PORT := os.Getenv("DB_PORT")
-	DB_NAME := os.Getenv("DB_NAME")
+	DB_PASSWORD := os.Getenv("MYSQLPASSWORD")
+	DB_USER := os.Getenv("MYSQLUSER")
+	DB_HOST := os.Getenv("MYSQLHOST")
+	DB_PORT := os.Getenv("MYSQLPORT")
+	DB_NAME := os.Getenv("MYSQLDATABASE")
 
 
 	var err error
