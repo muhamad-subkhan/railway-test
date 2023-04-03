@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"party/database"
 	"party/pkg/mysql"
 	"party/routes"
@@ -18,13 +19,14 @@ func main() {
 	mysql.Database()
 	
 	database.Migration()
-
+	
 	r := mux.NewRouter()
 
 	routes.Routes(r.PathPrefix("/api").Subrouter())
 	r.PathPrefix("/uploads").Handler(http.StripPrefix("/uploads/", http.FileServer(http.Dir("./uploads"))))
 
-	fmt.Println("Server Running on Port: 3000")
+	var Port = os.Getenv("PORT")
+	fmt.Println("Server Running on Port:"+ Port)
 
-	http.ListenAndServe("localhost:3000", r)
+	http.ListenAndServe(":" + Port, r)
 }
